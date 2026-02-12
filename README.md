@@ -60,13 +60,11 @@ git clone https://github.com/Rabin-Pant/Inventory-Pro.git
 cd Inventory-Pro
 
 # Backend setup
-python -m venv venv
-# Windows:
-venv\Scripts\activate
-# Mac/Linux:
-source venv/bin/activate
-pip install -r requirements.txt
+source ../venv/bin/activate
 python app.py
 
 # Frontend setup (new terminal)
 python -m http.server 5500
+
+Open in Browser: http://localhost:5500
+
