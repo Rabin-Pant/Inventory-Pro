@@ -11,13 +11,6 @@
   [![JWT](https://img.shields.io/badge/JWT-Auth-000000?logo=json-web-tokens&logoColor=white)](https://jwt.io)
   [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
 
-  <h3>
-    <a href="#-features">Features</a> •
-    <a href="#-quick-start">Quick Start</a> •
-    <a href="#-api-documentation">API</a> •
-    <a href="#-screenshots">Screenshots</a>
-  </h3>
-
   <p><i>A complete, production-ready inventory management system with role-based access control, real-time stock tracking, and automated invoice generation.</i></p>
   
   <p>
