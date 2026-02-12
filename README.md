@@ -58,14 +58,10 @@
 ## 🚀 Quick Start
 
 ```bash
-# Clone the repository
-git clone https://github.com/Rabin-Pant/Inventory-Pro.git
-cd Inventory-Pro
 
 # Set up backend
 python -m venv venv
 source venv/bin/activate  # Windows: venv\Scripts\activate
-pip install -r requirements.txt
 python app.py
 
 # Set up frontend (in another terminal)
