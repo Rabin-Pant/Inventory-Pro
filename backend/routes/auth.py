@@ -9,13 +9,23 @@ auth_bp = Blueprint('auth', __name__)
 def register():
     data = request.get_json()
     
+    # Check if user already exists
     if User.query.filter_by(email=data['email']).first():
         return jsonify({'error': 'Email already registered'}), 400
     
+    # Validate email format (basic)
+    if '@' not in data['email'] or '.' not in data['email']:
+        return jsonify({'error': 'Invalid email format'}), 400
+    
+    # Validate password length
+    if len(data['password']) < 6:
+        return jsonify({'error': 'Password must be at least 6 characters'}), 400
+    
+    # Create new user
     user = User(
         email=data['email'],
         name=data.get('name', data['email'].split('@')[0]),
-        role='customer',
+        role='customer',  # Always register as customer
         phone=data.get('phone', ''),
         address=data.get('address', '')
     )
@@ -25,7 +35,7 @@ def register():
     db.session.commit()
     
     return jsonify({
-        'message': 'User created successfully',
+        'message': 'Registration successful',
         'user': user.to_dict()
     }), 201
 

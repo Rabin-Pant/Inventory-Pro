@@ -188,3 +188,42 @@
     text-transform: uppercase;
     letter-spacing: 1px;
 }
+
+/* ===== REGISTRATION FORM ===== */
+.modal-body .form-group {
+    margin-bottom: 1.2rem;
+}
+
+.modal-body .form-label i {
+    margin-right: 6px;
+    color: #667eea;
+}
+
+.modal-body small {
+    display: block;
+    margin-top: 4px;
+}
+
+/* ===== SUCCESS STATE ===== */
+.modal-body .bi-check-circle {
+    animation: pop 0.3s ease;
+}
+
+@keyframes pop {
+    0% {
+        transform: scale(0);
+    }
+    80% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* ===== PHONE & ADDRESS FIELDS ===== */
+.modal-body input[type="tel"]:focus,
+.modal-body textarea:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}

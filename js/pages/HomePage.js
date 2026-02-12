@@ -1,6 +1,7 @@
 function HomePage() {
     const { login } = useAppContext();
     const [showLogin, setShowLogin] = React.useState(false);
+    const [showRegister, setShowRegister] = React.useState(false);
     const [loginRole, setLoginRole] = React.useState('customer');
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
@@ -11,6 +12,16 @@ function HomePage() {
             await login(email, password, loginRole);
             setShowLogin(false);
         }
+    };
+
+    const switchToRegister = () => {
+        setShowLogin(false);
+        setShowRegister(true);
+    };
+
+    const switchToLogin = () => {
+        setShowRegister(false);
+        setShowLogin(true);
     };
 
     return (
@@ -42,6 +53,15 @@ function HomePage() {
                                 }}
                             >
                                 Admin Login
+                            </button>
+                        </li>
+                        <li>
+                            <button 
+                                className="btn btn-success"
+                                onClick={() => setShowRegister(true)}
+                                style={{ background: '#28a745' }}
+                            >
+                                <i className="bi bi-person-plus"></i> Register
                             </button>
                         </li>
                     </ul>
@@ -113,7 +133,25 @@ function HomePage() {
                 </div>
             </section>
 
-            {showLogin && <LoginModal role={loginRole} onClose={() => setShowLogin(false)} email={email} setEmail={setEmail} password={password} setPassword={setPassword} handleLogin={handleLogin} />}
+            {showLogin && (
+                <LoginModal 
+                    role={loginRole} 
+                    onClose={() => setShowLogin(false)} 
+                    onSwitchToRegister={switchToRegister}
+                    email={email} 
+                    setEmail={setEmail} 
+                    password={password} 
+                    setPassword={setPassword} 
+                    handleLogin={handleLogin} 
+                />
+            )}
+
+            {showRegister && (
+                <RegisterModal 
+                    onClose={() => setShowRegister(false)}
+                    onSwitchToLogin={switchToLogin}
+                />
+            )}
 
             <footer className="footer">
                 <div className="container" style={{ textAlign: 'center' }}>

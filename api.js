@@ -5,6 +5,7 @@ const API_BASE_URL = 'http://172.22.196.63:5000/api';
 let authToken = localStorage.getItem('token');
 
 const ApiService = {
+    // ===== TOKEN MANAGEMENT =====
     setToken: (token) => {
         authToken = token;
         if (token) {
@@ -24,14 +25,17 @@ const ApiService = {
         return headers;
     },
 
-    // Auth endpoints
+    // ===== AUTH ENDPOINTS =====
     login: async (email, password) => {
         const response = await fetch(`${API_BASE_URL}/auth/login`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email, password })
         });
-        if (!response.ok) throw await response.json();
+        if (!response.ok) {
+            const error = await response.json();
+            throw new Error(error.error || 'Login failed');
+        }
         return response.json();
     },
 
@@ -39,9 +43,18 @@ const ApiService = {
         const response = await fetch(`${API_BASE_URL}/auth/register`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(userData)
+            body: JSON.stringify({
+                name: userData.name,
+                email: userData.email,
+                password: userData.password,
+                phone: userData.phone || '',
+                address: userData.address || ''
+            })
         });
-        if (!response.ok) throw await response.json();
+        if (!response.ok) {
+            const error = await response.json();
+            throw new Error(error.error || 'Registration failed');
+        }
         return response.json();
     },
 
@@ -53,9 +66,25 @@ const ApiService = {
         return response.json();
     },
 
-    // Products endpoints
+    updateProfile: async (profileData) => {
+        const response = await fetch(`${API_BASE_URL}/auth/update`, {
+            method: 'PUT',
+            headers: ApiService.getHeaders(),
+            body: JSON.stringify(profileData)
+        });
+        if (!response.ok) throw await response.json();
+        return response.json();
+    },
+
+    // ===== PRODUCTS ENDPOINTS =====
     getProducts: async () => {
         const response = await fetch(`${API_BASE_URL}/products/`);
+        if (!response.ok) throw await response.json();
+        return response.json();
+    },
+
+    getProduct: async (productId) => {
+        const response = await fetch(`${API_BASE_URL}/products/${productId}`);
         if (!response.ok) throw await response.json();
         return response.json();
     },
@@ -89,7 +118,7 @@ const ApiService = {
         return response.json();
     },
 
-    // Categories endpoints
+    // ===== CATEGORIES ENDPOINTS =====
     getCategories: async () => {
         const response = await fetch(`${API_BASE_URL}/categories/`);
         if (!response.ok) throw await response.json();
@@ -115,9 +144,17 @@ const ApiService = {
         return response.json();
     },
 
-    // Orders endpoints
+    // ===== ORDERS ENDPOINTS =====
     getOrders: async () => {
         const response = await fetch(`${API_BASE_URL}/orders/`, {
+            headers: ApiService.getHeaders()
+        });
+        if (!response.ok) throw await response.json();
+        return response.json();
+    },
+
+    getOrder: async (orderId) => {
+        const response = await fetch(`${API_BASE_URL}/orders/${orderId}`, {
             headers: ApiService.getHeaders()
         });
         if (!response.ok) throw await response.json();
@@ -130,7 +167,10 @@ const ApiService = {
             headers: ApiService.getHeaders(),
             body: JSON.stringify(orderData)
         });
-        if (!response.ok) throw await response.json();
+        if (!response.ok) {
+            const error = await response.json();
+            throw new Error(error.error || 'Failed to place order');
+        }
         return response.json();
     },
 
@@ -144,9 +184,17 @@ const ApiService = {
         return response.json();
     },
 
-    // Invoices endpoints
+    // ===== INVOICES ENDPOINTS =====
     getInvoices: async () => {
         const response = await fetch(`${API_BASE_URL}/invoices/`, {
+            headers: ApiService.getHeaders()
+        });
+        if (!response.ok) throw await response.json();
+        return response.json();
+    },
+
+    getInvoice: async (invoiceId) => {
+        const response = await fetch(`${API_BASE_URL}/invoices/${invoiceId}`, {
             headers: ApiService.getHeaders()
         });
         if (!response.ok) throw await response.json();
@@ -170,3 +218,6 @@ const ApiService = {
         window.URL.revokeObjectURL(url);
     }
 };
+
+// Make it global
+window.ApiService = ApiService;

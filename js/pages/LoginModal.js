@@ -1,4 +1,4 @@
-function LoginModal({ role, onClose, email, setEmail, password, setPassword, handleLogin }) {
+function LoginModal({ role, onClose, onSwitchToRegister, email, setEmail, password, setPassword, handleLogin }) {
     return (
         <div className="modal" onClick={onClose}>
             <div className="modal-content" onClick={(e) => e.stopPropagation()}>
@@ -20,7 +20,7 @@ function LoginModal({ role, onClose, email, setEmail, password, setPassword, han
                                 className="form-control"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
-                                placeholder="Enter your email"
+                                placeholder="yourname@example.com"
                                 required
                             />
                         </div>
@@ -35,16 +35,29 @@ function LoginModal({ role, onClose, email, setEmail, password, setPassword, han
                                 required
                             />
                         </div>
-                        <div style={{ marginTop: '20px', padding: '15px', background: '#f8f9fa', borderRadius: '6px' }}>
-                            <p style={{ margin: 0, fontSize: '14px', color: '#6c757d' }}>
-                                <strong>Demo Credentials:</strong><br />
-                                Admin: admin@inventorypro.com / admin123<br />
-                                Customer: customer@example.com / customer123
-                            </p>
-                        </div>
+                        
                         <button type="submit" className="btn btn-primary" style={{ width: '100%', marginTop: '20px' }}>
                             Login
                         </button>
+                        
+                        {role === 'customer' && (
+                            <div style={{ marginTop: '15px', textAlign: 'center' }}>
+                                <span style={{ color: '#6c757d' }}>Don't have an account? </span>
+                                <button 
+                                    type="button"
+                                    onClick={onSwitchToRegister}  // ← FIXED: No more alert!
+                                    style={{ 
+                                        background: 'none', 
+                                        border: 'none', 
+                                        color: '#667eea', 
+                                        cursor: 'pointer',
+                                        textDecoration: 'underline'
+                                    }}
+                                >
+                                    Register here
+                                </button>
+                            </div>
+                        )}
                     </form>
                 </div>
             </div>
