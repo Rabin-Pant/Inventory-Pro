@@ -68,3 +68,8 @@ python -m http.server 5500
 
 Open in Browser: http://localhost:5500
 
+#Login Part 
+For Customer you can create your own id and login but if you want to login as admin write this:
+admin@inventorypro.com
+admin123
+
