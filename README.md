@@ -13,21 +13,18 @@
 
   <h3>
     <a href="#-features">Features</a> •
-    <a href="#-demo">Demo</a> •
-    <a href="#-installation">Installation</a> •
+    <a href="#-quick-start">Quick Start</a> •
     <a href="#-api-documentation">API</a> •
     <a href="#-screenshots">Screenshots</a>
   </h3>
 
-  <img src="https://via.placeholder.com/1000x400/667eea/ffffff?text=InventoryPro+Dashboard" alt="InventoryPro Banner" width="100%">
-  
   <p><i>A complete, production-ready inventory management system with role-based access control, real-time stock tracking, and automated invoice generation.</i></p>
   
   <p>
-    <a href="https://github.com/Rabin-Pant/Inventory-Pro">
+    <a href="https://github.com/Rabin-Pant/Inventory-Pro/stargazers">
       <img src="https://img.shields.io/github/stars/Rabin-Pant/Inventory-Pro?style=social" alt="stars">
     </a>
-    <a href="https://github.com/Rabin-Pant/Inventory-Pro/fork">
+    <a href="https://github.com/Rabin-Pant/Inventory-Pro/network/members">
       <img src="https://img.shields.io/github/forks/Rabin-Pant/Inventory-Pro?style=social" alt="forks">
     </a>
     <a href="https://github.com/Rabin-Pant/Inventory-Pro/issues">
@@ -41,7 +38,7 @@
 ## ✨ Features
 
 <div align="center">
-  
+
 | 👑 **Admin** | 👤 **Customer** | 🔧 **Core** |
 |-------------|----------------|-------------|
 | ✅ Dashboard Analytics | ✅ Browse Products | ✅ JWT Authentication |
@@ -58,11 +55,18 @@
 ## 🚀 Quick Start
 
 ```bash
+# Clone the repository
+git clone https://github.com/Rabin-Pant/Inventory-Pro.git
+cd Inventory-Pro
 
-# Set up backend
+# Backend setup
 python -m venv venv
-source venv/bin/activate  # Windows: venv\Scripts\activate
+# Windows:
+venv\Scripts\activate
+# Mac/Linux:
+source venv/bin/activate
+pip install -r requirements.txt
 python app.py
 
-# Set up frontend (in another terminal)
+# Frontend setup (new terminal)
 python -m http.server 5500
