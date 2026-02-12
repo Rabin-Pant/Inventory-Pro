@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' 'unsafe-eval';">
+    <title>Inventory Management System</title>
+    
+    <!-- React & ReactDOM -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    
+    <!-- Babel -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    
+    <!-- CSS - Organized -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/customer.css">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+    <div id="root"></div>
+    
+    <!-- API Service -->
+    <script type="text/babel" src="js/api.js"></script>
+    
+    <!-- Context -->
+    <script type="text/babel" src="js/context.js"></script>
+    
+    <!-- Common Components -->
+    <script type="text/babel" src="js/components/common/Button.js"></script>
+    <script type="text/babel" src="js/components/common/Card.js"></script>
+    <script type="text/babel" src="js/components/common/Modal.js"></script>
+    <script type="text/babel" src="js/components/common/Badge.js"></script>
+    <script type="text/babel" src="js/components/common/Table.js"></script>
+    
+    <!-- Customer Components -->
+    <script type="text/babel" src="js/components/customer/CustomerLayout.js"></script>
+    <script type="text/babel" src="js/components/customer/CustomerDashboard.js"></script>
+    <script type="text/babel" src="js/components/customer/CustomerProducts.js"></script>
+    <script type="text/babel" src="js/components/customer/CustomerCart.js"></script>
+    <script type="text/babel" src="js/components/customer/CheckoutForm.js"></script>
+    <script type="text/babel" src="js/components/customer/CustomerOrders.js"></script>
+    <script type="text/babel" src="js/components/customer/CustomerInvoices.js"></script>
+    
+    <!-- Admin Components -->
+    <script type="text/babel" src="js/components/admin/AdminLayout.js"></script>
+    <script type="text/babel" src="js/components/admin/AdminDashboard.js"></script>
+    <script type="text/babel" src="js/components/admin/AdminProducts.js"></script>
+    <script type="text/babel" src="js/components/admin/AdminCategories.js"></script>
+    <script type="text/babel" src="js/components/admin/AdminOrders.js"></script>
+    <script type="text/babel" src="js/components/admin/OrderDetailsModal.js"></script>
+    <script type="text/babel" src="js/components/admin/AdminInvoices.js"></script>
+    
+    <!-- Pages -->
+    <script type="text/babel" src="js/pages/HomePage.js"></script>
+    <script type="text/babel" src="js/pages/LoginModal.js"></script>
+    
+    <!-- Main App -->
+    <script type="text/babel" src="js/main.js"></script>
+</body>
+</html>
