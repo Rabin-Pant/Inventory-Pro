@@ -13,7 +13,7 @@ function CustomerDashboard() {
             
             <div className="row">
                 <div className="col-md-4">
-                    <div className="stat-card">
+                    <div className="stat-card stat-card--primary">
                         <div className="stat-icon">
                             <i className="bi bi-bag-check"></i>
                         </div>
@@ -22,7 +22,7 @@ function CustomerDashboard() {
                     </div>
                 </div>
                 <div className="col-md-4">
-                    <div className="stat-card" style={{ background: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)' }}>
+                    <div className="stat-card stat-card--warning">
                         <div className="stat-icon">
                             <i className="bi bi-clock-history"></i>
                         </div>
@@ -31,7 +31,7 @@ function CustomerDashboard() {
                     </div>
                 </div>
                 <div className="col-md-4">
-                    <div className="stat-card" style={{ background: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)' }}>
+                    <div className="stat-card stat-card--success">
                         <div className="stat-icon">
                             <i className="bi bi-currency-dollar"></i>
                         </div>

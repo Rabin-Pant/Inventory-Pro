@@ -39,7 +39,7 @@ function CustomerCart() {
             <div className="row">
                 <div className="col-lg-8">
                     <div className="card">
-                        <div style={{ overflow: 'auto' }}>
+                        <div className="table-responsive">
                             <table className="table">
                                 <thead>
                                     <tr>

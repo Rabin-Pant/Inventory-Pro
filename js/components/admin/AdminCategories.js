@@ -53,10 +53,7 @@ function AdminCategories() {
                     <div className="modal-content" onClick={(e) => e.stopPropagation()}>
                         <div className="modal-header">
                             <h3>Add Category</h3>
-                            <button 
-                                onClick={() => setShowModal(false)}
-                                style={{ background: 'none', border: 'none', fontSize: '24px', cursor: 'pointer' }}
-                            >
+                            <button className="modal-close" onClick={() => setShowModal(false)}>
                                 &times;
                             </button>
                         </div>

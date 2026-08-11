@@ -26,52 +26,59 @@ function AdminInvoices() {
     };
 
     if (loading) {
-        return <div>Loading invoices...</div>;
+        return (
+            <div className="loading-state">
+                <div className="loading-spinner"></div>
+                <span>Loading invoices...</span>
+            </div>
+        );
     }
 
     return (
         <React.Fragment>
             <h2 style={{ marginBottom: '20px' }}>Invoices</h2>
             <div className="card">
-                <table className="table">
-                    <thead>
-                        <tr>
-                            <th>Invoice #</th>
-                            <th>Order #</th>
-                            <th>Customer</th>
-                            <th>Date</th>
-                            <th>Total</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {invoices.map(invoice => (
-                            <tr key={invoice.id}>
-                                <td>#{invoice.order_number}</td>
-                                <td>#{invoice.order_number}</td>
-                                <td>{invoice.customer_name}</td>
-                                <td>{new Date(invoice.date).toLocaleDateString()}</td>
-                                <td>${invoice.total?.toFixed(2)}</td>
-                                <td>
-                                    <button 
-                                        className="btn btn-info btn-sm"
-                                        onClick={() => handleDownload(invoice.id)}
-                                    >
-                                        <i className="bi bi-download"></i> Download
-                                    </button>
-                                </td>
-                            </tr>
-                        ))}
-                        {invoices.length === 0 && (
+                <div className="table-responsive">
+                    <table className="table">
+                        <thead>
                             <tr>
-                                <td colSpan="6" style={{ textAlign: 'center', padding: '40px' }}>
-                                    <i className="bi bi-receipt" style={{ fontSize: '48px', color: '#6c757d' }}></i>
-                                    <p style={{ marginTop: '10px' }}>No invoices found</p>
-                                </td>
+                                <th>Invoice #</th>
+                                <th>Order #</th>
+                                <th>Customer</th>
+                                <th>Date</th>
+                                <th>Total</th>
+                                <th>Actions</th>
                             </tr>
-                        )}
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            {invoices.map(invoice => (
+                                <tr key={invoice.id}>
+                                    <td>#{invoice.order_number}</td>
+                                    <td>#{invoice.order_number}</td>
+                                    <td>{invoice.customer_name}</td>
+                                    <td>{new Date(invoice.date).toLocaleDateString()}</td>
+                                    <td>${invoice.total?.toFixed(2)}</td>
+                                    <td>
+                                        <button
+                                            className="btn btn-info btn-sm"
+                                            onClick={() => handleDownload(invoice.id)}
+                                        >
+                                            <i className="bi bi-download"></i> Download
+                                        </button>
+                                    </td>
+                                </tr>
+                            ))}
+                            {invoices.length === 0 && (
+                                <tr>
+                                    <td colSpan="6" style={{ textAlign: 'center', padding: '40px' }}>
+                                        <i className="bi bi-receipt" style={{ fontSize: '48px', color: '#6c757d' }}></i>
+                                        <p style={{ marginTop: '10px' }}>No invoices found</p>
+                                    </td>
+                                </tr>
+                            )}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </React.Fragment>
     );

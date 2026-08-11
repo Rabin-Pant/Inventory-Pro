@@ -23,10 +23,7 @@ function ProductModal({ product, onClose, onSave }) {
             <div className="modal-content" onClick={(e) => e.stopPropagation()}>
                 <div className="modal-header">
                     <h3>{product ? 'Edit Product' : 'Add Product'}</h3>
-                    <button 
-                        onClick={onClose}
-                        style={{ background: 'none', border: 'none', fontSize: '24px', cursor: 'pointer' }}
-                    >
+                    <button className="modal-close" onClick={onClose}>
                         &times;
                     </button>
                 </div>

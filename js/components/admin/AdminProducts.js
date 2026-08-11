@@ -55,57 +55,59 @@ function AdminProducts() {
             </div>
 
             <div className="card">
-                <table className="table">
-                    <thead>
-                        <tr>
-                            <th>Image</th>
-                            <th>Name</th>
-                            <th>Category</th>
-                            <th>Price</th>
-                            <th>Stock</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {filteredProducts.map(product => (
-                            <tr key={product.id}>
-                                <td>
-                                    <img 
-                                        src={product.image} 
-                                        style={{ width: '50px', height: '50px', borderRadius: '4px', objectFit: 'cover' }}
-                                        alt={product.name}
-                                    />
-                                </td>
-                                <td>{product.name}</td>
-                                <td>{product.category}</td>
-                                <td>${product.price?.toFixed(2)}</td>
-                                <td>
-                                    <span className={`badge ${product.stock < 10 ? 'badge-danger' : 'badge-success'}`}>
-                                        {product.stock}
-                                    </span>
-                                </td>
-                                <td>
-                                    <button 
-                                        className="btn btn-info btn-sm"
-                                        onClick={() => {
-                                            setEditingProduct(product);
-                                            setShowModal(true);
-                                        }}
-                                        style={{ marginRight: '5px' }}
-                                    >
-                                        <i className="bi bi-pencil"></i>
-                                    </button>
-                                    <button 
-                                        className="btn btn-danger btn-sm"
-                                        onClick={() => deleteProduct(product.id)}
-                                    >
-                                        <i className="bi bi-trash"></i>
-                                    </button>
-                                </td>
+                <div className="table-responsive">
+                    <table className="table">
+                        <thead>
+                            <tr>
+                                <th>Image</th>
+                                <th>Name</th>
+                                <th>Category</th>
+                                <th>Price</th>
+                                <th>Stock</th>
+                                <th>Actions</th>
                             </tr>
-                        ))}
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            {filteredProducts.map(product => (
+                                <tr key={product.id}>
+                                    <td>
+                                        <img
+                                            src={product.image}
+                                            style={{ width: '50px', height: '50px', borderRadius: '4px', objectFit: 'cover' }}
+                                            alt={product.name}
+                                        />
+                                    </td>
+                                    <td>{product.name}</td>
+                                    <td>{product.category}</td>
+                                    <td>${product.price?.toFixed(2)}</td>
+                                    <td>
+                                        <span className={`badge ${product.stock < 10 ? 'badge-danger' : 'badge-success'}`}>
+                                            {product.stock}
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <button
+                                            className="btn btn-info btn-sm"
+                                            onClick={() => {
+                                                setEditingProduct(product);
+                                                setShowModal(true);
+                                            }}
+                                            style={{ marginRight: '5px' }}
+                                        >
+                                            <i className="bi bi-pencil"></i>
+                                        </button>
+                                        <button
+                                            className="btn btn-danger btn-sm"
+                                            onClick={() => deleteProduct(product.id)}
+                                        >
+                                            <i className="bi bi-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
             </div>
 
             {showModal && (

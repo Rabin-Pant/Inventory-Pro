@@ -15,10 +15,7 @@ function OrderDetailsModal({ order, onClose, onUpdateStatus }) {
             <div className="modal-content" onClick={(e) => e.stopPropagation()} style={{ maxWidth: '700px' }}>
                 <div className="modal-header">
                     <h3>Order Details #{order.order_number?.slice(-6)}</h3>
-                    <button 
-                        onClick={onClose}
-                        style={{ background: 'none', border: 'none', fontSize: '24px', cursor: 'pointer' }}
-                    >
+                    <button className="modal-close" onClick={onClose}>
                         &times;
                     </button>
                 </div>

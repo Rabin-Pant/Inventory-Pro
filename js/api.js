@@ -1,5 +1,5 @@
 // API Service for backend communication
-const API_BASE_URL = 'http://172.22.196.63:5000/api';
+const API_BASE_URL = 'http://localhost:5000/api';
 
 // Token management
 let authToken = localStorage.getItem('token');

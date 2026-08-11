@@ -66,10 +66,7 @@ function RegisterModal({ onClose, onSwitchToLogin }) {
                 <div className="modal-content" onClick={(e) => e.stopPropagation()}>
                     <div className="modal-header">
                         <h3 style={{ color: '#28a745' }}>✅ Registration Successful!</h3>
-                        <button 
-                            onClick={onClose}
-                            style={{ background: 'none', border: 'none', fontSize: '24px', cursor: 'pointer' }}
-                        >
+                        <button className="modal-close" onClick={onClose}>
                             &times;
                         </button>
                     </div>
@@ -99,17 +96,7 @@ function RegisterModal({ onClose, onSwitchToLogin }) {
                 <div className="modal-body">
                     <form onSubmit={handleSubmit}>
                         {error && (
-                            <div style={{ 
-                                padding: '12px', 
-                                background: '#ffebee', 
-                                color: '#c62828', 
-                                borderRadius: '4px',
-                                marginBottom: '20px',
-                                fontSize: '14px',
-                                display: 'flex',
-                                alignItems: 'center',
-                                gap: '8px'
-                            }}>
+                            <div className="alert alert-danger">
                                 <i className="bi bi-exclamation-triangle"></i>
                                 <span>{error}</span>
                             </div>

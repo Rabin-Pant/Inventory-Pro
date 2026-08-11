@@ -29,47 +29,49 @@ function AdminOrders() {
             </div>
 
             <div className="card">
-                <table className="table">
-                    <thead>
-                        <tr>
-                            <th>Order #</th>
-                            <th>Customer</th>
-                            <th>Date</th>
-                            <th>Total</th>
-                            <th>Status</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {filteredOrders?.map(order => (
-                            <tr key={order.id}>
-                                <td>#{order.order_number?.slice(-6)}</td>
-                                <td>{order.customer_name}</td>
-                                <td>{new Date(order.date).toLocaleDateString()}</td>
-                                <td>${(order.final_total || order.total).toFixed(2)}</td>
-                                <td>
-                                    <span className={`badge badge-${
-                                        order.status === 'pending' ? 'warning' :
-                                        order.status === 'processing' ? 'info' :
-                                        order.status === 'shipped' ? 'primary' :
-                                        order.status === 'delivered' ? 'success' :
-                                        'danger'
-                                    }`}>
-                                        {order.status}
-                                    </span>
-                                </td>
-                                <td>
-                                    <button 
-                                        className="btn btn-info btn-sm"
-                                        onClick={() => setSelectedOrder(order)}
-                                    >
-                                        <i className="bi bi-eye"></i> View
-                                    </button>
-                                </td>
+                <div className="table-responsive">
+                    <table className="table">
+                        <thead>
+                            <tr>
+                                <th>Order #</th>
+                                <th>Customer</th>
+                                <th>Date</th>
+                                <th>Total</th>
+                                <th>Status</th>
+                                <th>Actions</th>
                             </tr>
-                        ))}
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            {filteredOrders?.map(order => (
+                                <tr key={order.id}>
+                                    <td>#{order.order_number?.slice(-6)}</td>
+                                    <td>{order.customer_name}</td>
+                                    <td>{new Date(order.date).toLocaleDateString()}</td>
+                                    <td>${(order.final_total || order.total).toFixed(2)}</td>
+                                    <td>
+                                        <span className={`badge badge-${
+                                            order.status === 'pending' ? 'warning' :
+                                            order.status === 'processing' ? 'info' :
+                                            order.status === 'shipped' ? 'primary' :
+                                            order.status === 'delivered' ? 'success' :
+                                            'danger'
+                                        }`}>
+                                            {order.status}
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <button
+                                            className="btn btn-info btn-sm"
+                                            onClick={() => setSelectedOrder(order)}
+                                        >
+                                            <i className="bi bi-eye"></i> View
+                                        </button>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
             </div>
 
             {selectedOrder && (
